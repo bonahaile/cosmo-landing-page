@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMO | Premium Clean Beauty</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .serif-title { font-family: 'Playfair Display', serif; }
+  </style>
+  <script>
+
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
+  </script>
+</head>
+<body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 antialiased pt-16 transition-colors duration-300">
+
+  <nav class="bg-white/95 dark:bg-stone-950/95 backdrop-blur-md fixed w-full z-40 top-0 start-0 border-b border-stone-100 dark:border-stone-900 transition-colors duration-300">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
+      <a href="#" class="flex items-center space-x-3 order-1">
+        <span class="self-center text-xl font-light tracking-[0.25em] uppercase text-stone-900 dark:text-white">COSMO</span>
+      </a>
+
+      <div class="flex items-center space-x-2 md:space-x-4 order-2 md:order-3">
+        <button id="theme-toggle" type="button" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white p-1 transition-colors" aria-label="Toggle Dark Mode">
+          <svg id="theme-toggle-sun-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.59 1.59m12.38 12.38l1.59 1.59M3 12h2.25m13.5 0H21M4.22 19.78l1.59-1.59M16.22 7.78l1.59-1.59M5.25 12a6.75 6.75 0 1113.5 0 6.75 6.75 0 01-13.5 0z"></path></svg>
+          <svg id="theme-toggle-moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+        </button>
+
+        <button id="search-open" type="button" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white p-1 transition-colors" aria-label="Open Search">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>
+        </button>
+
+        <button type="button" class="hidden sm:block text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white p-1 transition-colors" aria-label="Account">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"></path></svg>
+        </button>
+
+        <button id="cart-open" type="button" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white p-1 transition-colors relative" aria-label="Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path></svg>
+          <span id="cart-badge" class="absolute -top-1 -right-1.5 bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center scale-90">1</span>
+        </button>
+      </div>
+
+      <div class="hidden w-full md:block md:w-auto order-3 md:order-2">
+        <ul class="font-normal tracking-wider text-xs uppercase flex flex-col md:flex-row md:space-x-8 text-stone-600 dark:text-stone-400">
+          <li><a href="#" class="block py-2 md:py-0 text-stone-900 dark:text-white font-medium md:border-b md:border-stone-900 dark:md:border-white">Shop All</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">New Arrivals</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">Best Sellers</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">Skincare</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">Our Story</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="search-modal" class="hidden fixed inset-0 z-50 bg-stone-900/40 dark:bg-stone-950/60 backdrop-blur-sm flex items-start justify-center pt-20 px-4">
+    <div id="search-overlay-bg" class="absolute inset-0 -z-10"></div>
+    <div class="bg-white dark:bg-stone-900 w-full max-w-2xl rounded-lg shadow-xl border border-stone-100 dark:border-stone-800 p-6 mt-4 transition-colors duration-300">
+      <div class="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-4">
+        <div class="flex items-center space-x-3 w-full">
+          <svg class="w-5 h-5 text-stone-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path></svg>
+          <input id="search-input" type="text" placeholder="Search for products, skin concerns, ingredients..." class="w-full border-0 focus:outline-none text-stone-800 dark:text-stone-100 placeholder-stone-400 text-sm tracking-wide bg-transparent" />
+        </div>
+        <button id="search-close" class="text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 p-1"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></svg></button>
+      </div>
+      <div class="pt-5">
+        <h4 class="text-[10px] font-semibold uppercase tracking-widest text-stone-400 mb-3">Trending Searches</h4>
+        <div class="flex flex-wrap gap-2">
+          <a href="#" class="text-xs text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-800 hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 px-3 py-1.5 rounded-full transition-colors">Hydrating Serum</a>
+          <a href="#" class="text-xs text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-800 hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 px-3 py-1.5 rounded-full transition-colors">Lip Oil</a>
+          <a href="#" class="text-xs text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-800 hover:bg-stone-900 dark:hover:bg-white dark:hover:text-stone-900 px-3 py-1.5 rounded-full transition-colors">Cleansing Balm</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <div id="cart-overlay-bg" class="absolute inset-0 bg-stone-900/40 dark:bg-stone-950/60 backdrop-blur-xs transition-opacity"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white dark:bg-stone-900 shadow-xl flex flex-col transition-colors duration-300">
+        <div class="p-6 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between">
+          <h2 class="text-sm font-medium uppercase tracking-wider text-stone-900 dark:text-white">Your Bag (<span id="cart-count-title">1</span>)</h2>
+          <button id="cart-close" class="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></svg></button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items-container">
+
+          <div class="flex py-2 border-b border-stone-50 dark:border-stone-800 pb-4">
+            <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-stone-100 dark:border-stone-800 bg-stone-50">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200" alt="Serum" class="h-full w-full object-cover">
+            </div>
+            <div class="ml-4 flex flex-1 flex-col">
+              <div class="flex justify-between text-sm font-medium text-stone-900 dark:text-white">
+                <h3><a href="#">Orchid Peptide Hydration Serum</a></h3>
+                <p class="ml-4">$48.00</p>
+              </div>
+              <p class="mt-1 text-xs text-stone-400">Size: 50ml</p>
+              <div class="flex flex-1 items-end justify-between text-xs">
+                <p class="text-stone-500 dark:text-stone-400">Qty 1</p>
+                <button type="button" class="font-medium text-stone-400 hover:text-stone-900 dark:hover:text-white underline transition-colors">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-stone-100 dark:border-stone-800 p-6 bg-stone-50 dark:bg-stone-900/50">
+          <div class="flex justify-between text-sm font-medium text-stone-900 dark:text-white mb-2">
+            <p>Subtotal</p>
+            <p id="cart-subtotal">$48.00</p>
+          </div>
+          <p class="mt-0.5 text-xs text-stone-400 mb-4">Shipping and taxes calculated at checkout.</p>
+          <a href="#" class="flex items-center justify-center rounded-md bg-stone-900 dark:bg-white px-6 py-3 text-sm font-medium text-white dark:text-stone-950 shadow-sm hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors tracking-wide uppercase">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="relative bg-white dark:bg-stone-950 overflow-hidden border-b border-stone-100 dark:border-stone-900 transition-colors duration-300">
+    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-12 md:py-24 gap-12">
+      <div class="max-w-xl text-center md:text-left order-2 md:order-1">
+        <span class="text-[10px] font-semibold tracking-[0.3em] text-stone-400 dark:text-stone-500 uppercase block mb-3">Skin First. Always.</span>
+        <h1 class="serif-title text-4xl md:text-6xl font-normal text-stone-900 dark:text-white tracking-tight leading-tight mb-6">
+          Glow derived from <br><span class="italic font-light text-stone-600 dark:text-stone-400">pure earth materials</span>.
+        </h1>
+        <p class="text-sm text-stone-500 dark:text-stone-400 leading-relaxed mb-8 max-w-md">
+          Clean, conscious formulas designed to match your body's ecosystem. Cruelty-free ingredients sourced ethically and sustainably.
+        </p>
+        <a href="#shop-section" class="inline-block bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-xs font-medium uppercase tracking-[0.2em] px-8 py-3.5 rounded-md hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors">Explore The Catalog</a>
+      </div>
+      <div class="w-full md:w-1/2 order-1 md:order-2 flex justify-center">
+        <div class="relative w-80 h-96 md:w-96 md:h-[480px] bg-stone-100 dark:bg-stone-900 rounded-xl overflow-hidden shadow-sm">
+          <img src="pexels-rebornfilmes-37710473.jpg" alt="Cosmetic bottles" class="w-full h-full object-cover dark:brightness-90">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="shop-section" class="max-w-screen-xl mx-auto px-6 py-16">
+    <div class="flex flex-col md:flex-row gap-10">
+      
+      <aside class="w-full md:w-64 flex-shrink-0">
+        <div class="sticky top-24 space-y-8">
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-stone-900 dark:text-white border-b border-stone-200 dark:border-stone-800 pb-2 mb-4">Category</h3>
+            <ul class="space-y-2.5 text-sm text-stone-600 dark:text-stone-400">
+              <li><a href="#" class="text-stone-900 dark:text-white font-medium underline underline-offset-4">All Products</a></li>
+              <li><a href="#" class="hover:text-stone-900 dark:hover:text-white transition-colors">Cleansers</a></li>
+              <li><a href="#" class="hover:text-stone-900 dark:hover:text-white transition-colors">Serums & Oils</a></li>
+              <li><a href="#" class="hover:text-stone-900 dark:hover:text-white transition-colors">Moisturizers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-stone-900 dark:text-white border-b border-stone-200 dark:border-stone-800 pb-2 mb-4">Skin Concern</h3>
+            <div class="space-y-2">
+              <label class="flex items-center text-sm text-stone-600 dark:text-stone-400"><input type="checkbox" class="rounded border-stone-300 dark:border-stone-700 bg-transparent text-stone-900 dark:text-white focus:ring-stone-900 mr-2"> Hydration</label>
+              <label class="flex items-center text-sm text-stone-600 dark:text-stone-400"><input type="checkbox" class="rounded border-stone-300 dark:border-stone-700 bg-transparent text-stone-900 dark:text-white focus:ring-stone-900 mr-2"> Anti-Aging</label>
+              <label class="flex items-center text-sm text-stone-600 dark:text-stone-400"><input type="checkbox" class="rounded border-stone-300 dark:border-stone-700 bg-transparent text-stone-900 dark:text-white focus:ring-stone-900 mr-2"> Brightening</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="flex-1">
+        <div class="flex items-center justify-between mb-8">
+          <p class="text-xs text-stone-400 tracking-wide">Showing 3 Premium Essentials</p>
+          <select class="text-xs bg-transparent border-0 border-b border-stone-200 dark:border-stone-800 text-stone-600 dark:text-stone-400 focus:outline-none focus:border-stone-900 dark:focus:border-white pb-1 cursor-pointer">
+            <option class="dark:bg-stone-900">Featured Items</option>
+            <option class="dark:bg-stone-900">Price: Low to High</option>
+            <option class="dark:bg-stone-900">Price: High to Low</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+          
+          <div class="group relative flex flex-col justify-between">
+            <div>
+              <div class="aspect-square w-full overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900 border border-stone-200/40 dark:border-stone-800/60 relative">
+                <span class="absolute top-2 left-2 bg-white dark:bg-stone-800 text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 text-stone-900 dark:text-white shadow-sm z-10">Best Seller</span>
+                <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="mt-4 flex justify-between text-sm">
+                <div>
+                  <h3 class="font-medium text-stone-900 dark:text-white"><a href="#">Orchid Peptide Hydration Serum</a></h3>
+                  <p class="mt-1 text-xs text-stone-400">Deep cellular restoration</p>
+                </div>
+                <p class="font-medium text-stone-900 dark:text-white">$48.00</p>
+              </div>
+              <div class="flex items-center mt-1 text-amber-500 text-xs">★★★★★ <span class="text-stone-400 ml-1">(124)</span></div>
+            </div>
+            <button onclick="addItemToCart('Orchid Peptide Hydration Serum', 48.00, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200')" class="mt-4 w-full bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-xs uppercase font-medium tracking-wider py-2.5 rounded hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors">Quick Add</button>
+            <a href="prod.html" class="mt-4 text-center w-full  bg-green-600 text-white  text-xs uppercase font-medium tracking-wider py-2.5 rounded hover:bg-stone-800  transition-colors">View More</a>
+          </div>
+
+          <div class="group relative flex flex-col justify-between">
+            <div>
+              <div class="aspect-square w-full overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900 border border-stone-200/40 dark:border-stone-800/60 relative">
+                <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=400" alt="Lip Oil" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="mt-4 flex justify-between text-sm">
+                <div>
+                  <h3 class="font-medium text-stone-900 dark:text-white"><a href="#">Botanical Glaze Lip Oil</a></h3>
+                  <p class="mt-1 text-xs text-stone-400">High shine rose finish</p>
+                </div>
+                <p class="font-medium text-stone-900 dark:text-white">$24.00</p>
+              </div>
+              <div class="flex items-center mt-1 text-amber-500 text-xs">★★★★☆ <span class="text-stone-400 ml-1">(89)</span></div>
+            </div>
+            <button onclick="addItemToCart('Botanical Glaze Lip Oil', 24.00, 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=200')" class="mt-4 w-full bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-xs uppercase font-medium tracking-wider py-2.5 rounded hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors">Quick Add</button>
+            <a href="prod.html" class="mt-4 text-center w-full  bg-green-600 text-white  text-xs uppercase font-medium tracking-wider py-2.5 rounded hover:bg-stone-800  transition-colors">View More</a>
+          </div>
+
+          <div class="group relative flex flex-col justify-between">
+            <div>
+              <div class="aspect-square w-full overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900 border border-stone-200/40 dark:border-stone-800/60 relative">
+                <span class="absolute top-2 left-2 bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 shadow-sm z-10">New</span>
+                <img src="pexels-rebornfilmes-37710473.jpg" alt="Balm" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="mt-4 flex justify-between text-sm">
+                <div>
+                  <h3 class="font-medium text-stone-900 dark:text-white"><a href="#">Squalane Melting Balm</a></h3>
+                  <p class="mt-1 text-xs text-stone-400">Oil-to-milk remover</p>
+                </div>
+                <p class="font-medium text-stone-900 dark:text-white">$36.00</p>
+              </div>
+              <div class="flex items-center mt-1 text-amber-500 text-xs">★★★★★ <span class="text-stone-400 ml-1">(42)</span></div>
+            </div>
+            <button onclick="addItemToCart('Squalane Melting Balm', 36.00, 'https://images.unsplash.com/photo-1601612620770-9a41c6719b39?auto=format&fit=crop&q=80&w=400')" class="mt-4 w-full bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-xs uppercase font-medium tracking-wider py-2.5 rounded hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors">Quick Add</button>
+                        <a href="prod.html" class="mt-4 text-center w-full  bg-green-600 text-white  text-xs uppercase font-medium tracking-wider py-2.5 rounded hover:bg-stone-800  transition-colors">View More</a>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bg-white dark:bg-stone-950 border-t border-stone-100 dark:border-stone-900 mt-20 transition-colors duration-300">
+    <div class="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-stone-500 dark:text-stone-400">
+      <div class="space-y-4">
+        <span class="text-stone-900 dark:text-white font-light tracking-[0.25em] uppercase text-base block">COSMO</span>
+        <p class="text-xs leading-relaxed">Crafting high-end, clean dermatological essentials built on transparent raw sourcing.</p>
+      </div>
+      <div>
+        <h4 class="text-stone-900 dark:text-white font-medium uppercase text-xs tracking-wider mb-4">Customer Care</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">Shipping & Returns</a></li>
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">FAQ Hub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-stone-900 dark:text-white font-medium uppercase text-xs tracking-wider mb-4">Inside Cosmo</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">Sustainability Blueprint</a></li>
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">Ingredient Dictionary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-stone-900 dark:text-white font-medium uppercase text-xs tracking-wider mb-4">Newsletter</h4>
+        <p class="text-xs mb-3">Join for early arrivals access and skin routine guides.</p>
+        <div class="flex border-b border-stone-300 dark:border-stone-800 pb-1">
+          <input type="email" placeholder="Your email address" class="w-full bg-transparent border-0 text-xs focus:outline-none placeholder-stone-400 text-stone-800 dark:text-stone-200">
+          <button class="text-xs uppercase font-medium tracking-wider text-stone-900 dark:text-white ml-2">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-screen-xl mx-auto px-6 py-4 border-t border-stone-50 dark:border-stone-900 text-[11px] text-stone-400 text-center">
+      &copy; 2026 COSMO Inc. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle Elements
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-toggle-sun-icon');
+    const moonIcon = document.getElementById('theme-toggle-moon-icon');
+
+    // Sync theme UI elements with current DOM classes
+    function updateThemeIcons() {
+      if (document.documentElement.classList.contains('dark')) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+    updateThemeIcons(); // Run setup layout cycle on execution initialization
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+      updateThemeIcons();
+    });
+
+    // Search Modal Elements
+    const searchOpen = document.getElementById('search-open');
+    const searchClose = document.getElementById('search-close');
+    const searchModal = document.getElementById('search-modal');
+    const searchOverlay = document.getElementById('search-overlay-bg');
+    const searchInput = document.getElementById('search-input');
+
+    // Cart Drawer Elements
+    const cartOpen = document.getElementById('cart-open');
+    const cartClose = document.getElementById('cart-close');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartOverlay = document.getElementById('cart-overlay-bg');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartCountTitle = document.getElementById('cart-count-title');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+
+    // Memory array tracking checkout content items
+    let cartData = [
+      { name: 'Orchid Peptide Hydration Serum', price: 48.00, img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200' }
+    ];
+
+    // Search Trigger Handlers
+    searchOpen.addEventListener('click', () => {
+      searchModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => searchInput.focus(), 50);
+    });
+    const hideSearch = () => {
+      searchModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+    searchClose.addEventListener('click', hideSearch);
+    searchOverlay.addEventListener('click', hideSearch);
+
+    // Cart Drawer Handlers
+    cartOpen.addEventListener('click', () => cartDrawer.classList.remove('hidden'));
+    const hideCart = () => cartDrawer.classList.add('hidden');
+    cartClose.addEventListener('click', hideCart);
+    cartOverlay.addEventListener('click', hideCart);
+
+    // Render loop calculations
+    function renderCart() {
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      
+      cartData.forEach((item, index) => {
+        total += item.price;
+        cartItemsContainer.innerHTML += `
+          <div class="flex py-2 border-b border-stone-50 dark:border-stone-800 pb-4">
+            <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-stone-100 dark:border-stone-800 bg-stone-50">
+              <img src="${item.img}" alt="${item.name}" class="h-full w-full object-cover">
+            </div>
+            <div class="ml-4 flex flex-1 flex-col">
+              <div class="flex justify-between text-sm font-medium text-stone-900 dark:text-white">
+                <h3>${item.name}</h3>
+                <p class="ml-4">$${item.price.toFixed(2)}</p>
+              </div>
+              <div class="flex flex-1 items-end justify-between text-xs">
+                <p class="text-stone-500 dark:text-stone-400">Qty 1</p>
+                <button onclick="removeItemFromCart(${index})" type="button" class="font-medium text-stone-400 hover:text-stone-900 dark:hover:text-white underline transition-colors">Remove</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      cartBadge.innerText = cartData.length;
+      cartCountTitle.innerText = cartData.length;
+      cartSubtotal.innerText = `$${total.toFixed(2)}`;
+    }
+
+    function addItemToCart(name, price, img) {
+      cartData.push({ name, price, img });
+      renderCart();
+      cartDrawer.classList.remove('hidden'); 
+    }
+
+    function removeItemFromCart(index) {
+      cartData.splice(index, 1);
+      renderCart();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        hideSearch();
+        hideCart();
+      }
+    });
+  </script>
+</body>
+</html>

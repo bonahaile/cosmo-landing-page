@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMO | Orchid Peptide Hydration Serum</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Luxury Editorial Vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .serif-title { font-family: 'Playfair Display', serif; }
+  </style>
+  <script>
+    // Handle persistent color theme options immediately on document load initialization
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+<body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 antialiased pt-16 transition-colors duration-300">
+
+  <!-- ========================================== -->
+  <!-- 1. NAVIGATION BAR                          -->
+  <!-- ========================================== -->
+  <nav class="bg-white/95 dark:bg-stone-950/95 backdrop-blur-md fixed w-full z-40 top-0 start-0 border-b border-stone-100 dark:border-stone-900 transition-colors duration-300">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      
+      <!-- Logo and Back Navigation -->
+      <div class="flex items-center space-x-4 order-1">
+        <a href="index.html" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors" aria-label="Go Back">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path></svg>
+        </a>
+        <a href="index.html" class="flex items-center">
+          <span class="self-center text-xl font-light tracking-[0.25em] uppercase text-stone-900 dark:text-white">COSMO</span>
+        </a>
+      </div>
+
+      <!-- Right Utilities -->
+      <div class="flex items-center space-x-2 md:space-x-4 order-2 md:order-3">
+        <!-- Theme Toggle Switch Button -->
+        <button id="theme-toggle" type="button" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white p-1 transition-colors" aria-label="Toggle Dark Mode">
+          <svg id="theme-toggle-sun-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.22 4.22l1.59 1.59m12.38 12.38l1.59 1.59M3 12h2.25m13.5 0H21M4.22 19.78l1.59-1.59M16.22 7.78l1.59-1.59M5.25 12a6.75 6.75 0 1113.5 0 6.75 6.75 0 01-13.5 0z"></path></svg>
+          <svg id="theme-toggle-moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path></svg>
+        </button>
+
+        <!-- Shopping Bag Trigger -->
+        <button id="cart-open" type="button" class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white p-1 transition-colors relative" aria-label="Shopping Bag">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path></svg>
+          <span id="cart-badge" class="absolute -top-1 -right-1.5 bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center scale-90">1</span>
+        </button>
+      </div>
+
+      <!-- Main Menu Navigation Links -->
+      <div class="hidden w-full md:block md:w-auto order-3 md:order-2">
+        <ul class="font-normal tracking-wider text-xs uppercase flex flex-col md:flex-row md:space-x-8 text-stone-600 dark:text-stone-400">
+          <li><a href="index.html" class="block py-2 md:py-0 text-stone-900 dark:text-white font-medium md:border-b md:border-stone-900 dark:md:border-white">Shop All</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">New Arrivals</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">Best Sellers</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">Skincare</a></li>
+          <li><a href="#" class="block py-2 md:py-0 hover:text-stone-900 dark:hover:text-white transition-colors">Our Story</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- 2. NOTIFICATION TOAST                      -->
+  <!-- ========================================== -->
+  <div id="toast" class="fixed top-20 right-6 z-50 bg-stone-900 text-white dark:bg-white dark:text-stone-950 text-xs px-5 py-3 rounded-md shadow-lg transform translate-x-72 transition-transform duration-300 pointer-events-none">
+    Product successfully added to your bag.
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. SLIDE-OUT CART DRAWER                   -->
+  <!-- ========================================== -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <div id="cart-overlay-bg" class="absolute inset-0 bg-stone-900/40 dark:bg-stone-950/60 backdrop-blur-xs transition-opacity"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white dark:bg-stone-900 shadow-xl flex flex-col transition-colors duration-300">
+        <div class="p-6 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between">
+          <h2 class="text-sm font-medium uppercase tracking-wider text-stone-900 dark:text-white">Your Bag (<span id="cart-count-title">1</span>)</h2>
+          <button id="cart-close" class="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path></svg></button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items-container">
+          <!-- Item injection block loaded dynamically -->
+        </div>
+
+        <div class="border-t border-stone-100 dark:border-stone-800 p-6 bg-stone-50 dark:bg-stone-900/50">
+          <div class="flex justify-between text-sm font-medium text-stone-900 dark:text-white mb-2">
+            <p>Subtotal</p>
+            <p id="cart-subtotal">$48.00</p>
+          </div>
+          <p class="mt-0.5 text-xs text-stone-400 mb-4">Shipping and taxes calculated at checkout.</p>
+          <a href="#" class="flex items-center justify-center rounded-md bg-stone-900 dark:bg-white px-6 py-3 text-sm font-medium text-white dark:text-stone-950 shadow-sm hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors tracking-wide uppercase">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 4. PRODUCT DETAILED WORKSPACE              -->
+  <!-- ========================================== -->
+  <main class="max-w-screen-xl mx-auto px-6 py-12">
+    
+    <!-- Breadcrumbs -->
+    <div class="flex items-center space-x-2 text-xs tracking-wider uppercase text-stone-400 dark:text-stone-500 mb-8">
+      <a href="index.html" class="hover:text-stone-900 dark:hover:text-white transition-colors">Home</a>
+      <span>/</span>
+      <a href="index.html#shop-section" class="hover:text-stone-900 dark:hover:text-white transition-colors">Skincare</a>
+      <span>/</span>
+      <span class="text-stone-900 dark:text-white font-medium">Orchid Peptide Hydration Serum</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 pb-20 border-b border-stone-100 dark:border-stone-900">
+      
+      <!-- Interactive Media Gallery Section -->
+      <div class="space-y-4">
+        <!-- Main Image Frame -->
+        <div class="aspect-square w-full overflow-hidden rounded-xl bg-stone-100 dark:bg-stone-900 border border-stone-200/40 dark:border-stone-800 relative shadow-xs">
+          <img id="main-product-image" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600" alt="COSMO Orchid Peptide Serum Bottle" class="h-full w-full object-cover">
+        </div>
+        
+        <!-- Thumbnail Strip -->
+        <div class="grid grid-cols-3 gap-3">
+          <button onclick="switchProductImage('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600')" class="aspect-square rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 focus:outline-hidden hover:opacity-80 transition-opacity">
+            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200" alt="Front Bottle View" class="h-full w-full object-cover">
+          </button>
+          <button onclick="switchProductImage('https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&q=80&w=600')" class="aspect-square rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-100 dark:border-stone-800 focus:outline-hidden hover:opacity-80 transition-opacity">
+            <img src="https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&q=80&w=200" alt="Liquid Dropper Texture" class="h-full w-full object-cover">
+          </button>
+          <button onclick="switchProductImage('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600')" class="aspect-square rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-100 dark:border-stone-800 focus:outline-hidden hover:opacity-80 transition-opacity">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=200" alt="Minimalist Bathroom Display" class="h-full w-full object-cover">
+          </button>
+        </div>
+      </div>
+
+      <!-- Core Buying Options Panel -->
+      <div class="flex flex-col justify-between">
+        <div>
+          <!-- Tags & Rating -->
+          <span class="inline-block bg-stone-100 dark:bg-stone-800 text-[10px] font-semibold tracking-widest uppercase px-2.5 py-1 text-stone-900 dark:text-white rounded-md mb-4">Core Essential</span>
+          <h1 class="serif-title text-3xl md:text-4xl font-normal tracking-tight text-stone-900 dark:text-white mb-2">Orchid Peptide Hydration Serum</h1>
+          <p class="text-sm italic text-stone-500 dark:text-stone-400 mb-4">Deep cellular restoration & glass-skin bounce</p>
+          
+          <div class="flex items-center space-x-4 mb-6">
+            <p id="product-price" class="text-2xl font-semibold text-stone-900 dark:text-white">$48.00</p>
+            <div class="flex items-center text-amber-500 text-xs">
+              <span>★★★★★</span>
+              <a href="#reviews-section" class="text-stone-400 dark:text-stone-500 hover:text-stone-700 dark:hover:text-stone-200 ml-1.5 underline underline-offset-2">124 Reviews</a>
+            </div>
+          </div>
+
+          <p class="text-sm leading-relaxed text-stone-500 dark:text-stone-400 mb-8">
+            An ultra-nourishing elixir formulated with pure wild orchid peptides and multi-weight hyaluronic acid to flood dehydrated cells. Designed to restore critical elasticity, leaving skin plump, bouncy, and deeply radiant.
+          </p>
+
+          <!-- Volume Selection Dropdown -->
+          <div class="mb-8">
+            <h3 class="text-[10px] font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Choose Volume</h3>
+            <div class="flex gap-2">
+              <button onclick="selectProductSize('30ml', 34.00, this)" class="px-4 py-2 text-xs uppercase tracking-wider border border-stone-200 dark:border-stone-800 hover:border-stone-900 dark:hover:border-white text-stone-600 dark:text-stone-300 rounded-md transition-all">30ml</button>
+              <button onclick="selectProductSize('50ml', 48.00, this)" class="px-4 py-2 text-xs uppercase tracking-wider border border-stone-900 bg-stone-900 text-white dark:border-white dark:bg-white dark:text-stone-950 rounded-md transition-all font-semibold">50ml</button>
+              <button onclick="selectProductSize('100ml', 82.00, this)" class="px-4 py-2 text-xs uppercase tracking-wider border border-stone-200 dark:border-stone-800 hover:border-stone-900 dark:hover:border-white text-stone-600 dark:text-stone-300 rounded-md transition-all">100ml</button>
+            </div>
+          </div>
+
+          <!-- Quantity Selection -->
+          <div class="mb-8">
+            <h3 class="text-[10px] font-semibold uppercase tracking-wider text-stone-400 dark:text-stone-500 mb-3">Quantity</h3>
+            <div class="flex items-center space-x-4">
+              <div class="flex items-center border border-stone-200 dark:border-stone-800 rounded-md">
+                <button onclick="adjustCounter(-1)" class="px-3.5 py-1.5 text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">-</button>
+                <span id="quantity-counter" class="px-3 text-sm font-medium">1</span>
+                <button onclick="adjustCounter(1)" class="px-3.5 py-1.5 text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add To Bag Button Frame -->
+        <div class="space-y-4">
+          <button onclick="triggerAddToBag()" class="w-full bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-xs uppercase font-semibold tracking-widest py-4 rounded-md hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors shadow-xs">
+            Add To Bag
+          </button>
+          
+          <!-- Collapsible Accordions System -->
+          <div class="border-t border-stone-100 dark:border-stone-900 pt-4 space-y-3">
+            <!-- Details & Eco Credentials -->
+            <div class="border-b border-stone-100 dark:border-stone-900 pb-3">
+              <button onclick="toggleAccordion('detail-accordion-1')" class="flex items-center justify-between w-full text-xs font-semibold uppercase tracking-wider text-stone-700 dark:text-stone-300">
+                <span>Clean Sourcing & Packaging</span>
+                <svg id="detail-accordion-1-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
+              </button>
+              <div id="detail-accordion-1" class="hidden mt-3 text-xs leading-relaxed text-stone-500 dark:text-stone-400">
+                Sourced from family-owned wild mountain fields. Housed in a 100% recyclable glass jar topped with a post-consumer recycled dropper bulb. 
+              </div>
+            </div>
+
+            <!-- Active Ingredients -->
+            <div class="border-b border-stone-100 dark:border-stone-900 pb-3">
+              <button onclick="toggleAccordion('detail-accordion-2')" class="flex items-center justify-between w-full text-xs font-semibold uppercase tracking-wider text-stone-700 dark:text-stone-300">
+                <span>Active Ingredients</span>
+                <svg id="detail-accordion-2-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
+              </button>
+              <div id="detail-accordion-2" class="hidden mt-3 text-xs leading-relaxed text-stone-500 dark:text-stone-400">
+                Wild Orchid Peptide Complex, Multi-weight Hyaluronic Acid (1.5%), Organic Centella Asiatica Root Extract, Cold-Pressed Squalane.
+              </div>
+            </div>
+
+            <!-- Application Guide -->
+            <div class="border-b border-stone-100 dark:border-stone-900 pb-3">
+              <button onclick="toggleAccordion('detail-accordion-3')" class="flex items-center justify-between w-full text-xs font-semibold uppercase tracking-wider text-stone-700 dark:text-stone-300">
+                <span>How to Apply</span>
+                <svg id="detail-accordion-3-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
+              </button>
+              <div id="detail-accordion-3" class="hidden mt-3 text-xs leading-relaxed text-stone-500 dark:text-stone-400">
+                Apply 3 to 4 drops onto damp, freshly cleansed skin morning and night. Press gently into the face and neck area. Follow immediately with your premium COSMO barrier cream.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 5. REVIEWS WORKSPACE SECTION               -->
+    <!-- ========================================== -->
+    <section id="reviews-section" class="py-16 border-b border-stone-100 dark:border-stone-900">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="serif-title text-2xl font-normal text-stone-900 dark:text-white mb-8">Customer Reviews</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <!-- Score summary -->
+          <div class="bg-stone-100/50 dark:bg-stone-900/50 p-6 rounded-lg text-center flex flex-col justify-center">
+            <p class="text-4xl font-semibold text-stone-900 dark:text-white">4.9</p>
+            <p class="text-xs text-amber-500 mt-1">★★★★★</p>
+            <p class="text-xs text-stone-400 mt-2">Based on 124 global experiences</p>
+          </div>
+
+          <!-- Review rating breakdown bar charts -->
+          <div class="md:col-span-2 space-y-2 flex flex-col justify-center">
+            <div class="flex items-center text-xs text-stone-500">
+              <span class="w-12">5 stars</span>
+              <div class="flex-1 bg-stone-200 dark:bg-stone-800 h-2 mx-3 rounded-full overflow-hidden">
+                <div class="bg-stone-900 dark:bg-stone-300 h-full" style="width: 92%"></div>
+              </div>
+              <span class="w-8 text-right">92%</span>
+            </div>
+            <div class="flex items-center text-xs text-stone-500">
+              <span class="w-12">4 stars</span>
+              <div class="flex-1 bg-stone-200 dark:bg-stone-800 h-2 mx-3 rounded-full overflow-hidden">
+                <div class="bg-stone-900 dark:bg-stone-300 h-full" style="width: 6%"></div>
+              </div>
+              <span class="w-8 text-right">6%</span>
+            </div>
+            <div class="flex items-center text-xs text-stone-500">
+              <span class="w-12">3 stars</span>
+              <div class="flex-1 bg-stone-200 dark:bg-stone-800 h-2 mx-3 rounded-full overflow-hidden">
+                <div class="bg-stone-900 dark:bg-stone-300 h-full" style="width: 2%"></div>
+              </div>
+              <span class="w-8 text-right">2%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom review creation form -->
+        <div class="bg-white dark:bg-stone-900 border border-stone-100 dark:border-stone-800 p-6 rounded-lg mb-12">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-stone-900 dark:text-white mb-4">Share Your Journey</h3>
+          <form id="new-review-form" onsubmit="handleReviewSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] font-semibold uppercase text-stone-400 mb-1.5">Your Name</label>
+                <input id="form-name" type="text" required class="w-full text-xs p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-md focus:outline-hidden focus:border-stone-900 dark:focus:border-white">
+              </div>
+              <div>
+                <label class="block text-[10px] font-semibold uppercase text-stone-400 mb-1.5">Rating</label>
+                <select id="form-rating" class="w-full text-xs p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-md focus:outline-hidden">
+                  <option value="5">5 Stars (Excellent)</option>
+                  <option value="4">4 Stars (Good)</option>
+                  <option value="3">3 Stars (Average)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[10px] font-semibold uppercase text-stone-400 mb-1.5">Review Message</label>
+              <textarea id="form-body" rows="3" required class="w-full text-xs p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-md focus:outline-hidden focus:border-stone-900 dark:focus:border-white"></textarea>
+            </div>
+            <button type="submit" class="bg-stone-900 dark:bg-white text-white dark:text-stone-950 text-[10px] uppercase font-semibold tracking-wider px-6 py-3 rounded-md hover:bg-stone-800 dark:hover:bg-stone-100 transition-colors">Submit Experience</button>
+          </form>
+        </div>
+
+        <!-- Inner Reviews Feed -->
+        <div id="reviews-feed" class="space-y-6">
+          <div class="border-b border-stone-100 dark:border-stone-900 pb-6">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-semibold text-stone-900 dark:text-white">Sophia Reynolds</p>
+              <span class="text-xs text-amber-500">★★★★★</span>
+            </div>
+            <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+              Absolute holy grail! My combination skin usually breaks out with rich peptides, but this clean elixir is exceptionally weightless. Visible bounce and glowing hydration in less than five nights.
+            </p>
+          </div>
+          <div class="border-b border-stone-100 dark:border-stone-900 pb-6">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs font-semibold text-stone-900 dark:text-white">Marcus Chen</p>
+              <span class="text-xs text-amber-500">★★★★★</span>
+            </div>
+            <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+              Highly responsive hydration. The squalane texture sinks right into dry cells without sitting heavy under daytime makeup. Will definitely restock the 100ml.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. RELATED ITEMS SECTION                   -->
+    <!-- ========================================== -->
+    <section class="py-16">
+      <h2 class="serif-title text-2xl font-normal text-stone-900 dark:text-white mb-8">Curated Routine Additions</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Related Item 1 -->
+        <div class="group flex flex-col justify-between">
+          <div>
+            <div class="aspect-square w-full overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900 border border-stone-200/40 dark:border-stone-800 relative">
+              <img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&q=80&w=400" alt="COSMO Lip Oil" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="mt-4 flex justify-between text-sm">
+              <div>
+                <h3 class="font-medium text-stone-900 dark:text-white">Botanical Glaze Lip Oil</h3>
+                <p class="mt-1 text-xs text-stone-400">High shine rose finish</p>
+              </div>
+              <p class="font-medium text-stone-900 dark:text-white">$24.00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Item 2 -->
+        <div class="group flex flex-col justify-between">
+          <div>
+            <div class="aspect-square w-full overflow-hidden rounded-lg bg-stone-100 dark:bg-stone-900 border border-stone-200/40 dark:border-stone-800 relative">
+              <img src="https://images.unsplash.com/photo-1601612620770-9a41c6719b39?auto=format&fit=crop&q=80&w=400" alt="COSMO Balm" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="mt-4 flex justify-between text-sm">
+              <div>
+                <h3 class="font-medium text-stone-900 dark:text-white">Squalane Melting Balm</h3>
+                <p class="mt-1 text-xs text-stone-400">Oil-to-milk makeup remover</p>
+              </div>
+              <p class="font-medium text-stone-900 dark:text-white">$36.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 7. FOOTER                                  -->
+  <!-- ========================================== -->
+  <footer class="bg-white dark:bg-stone-950 border-t border-stone-100 dark:border-stone-900 mt-20 transition-colors duration-300">
+    <div class="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm text-stone-500 dark:text-stone-400">
+      <div class="space-y-4">
+        <span class="text-stone-900 dark:text-white font-light tracking-[0.25em] uppercase text-base block">COSMO</span>
+        <p class="text-xs leading-relaxed">Crafting high-end, clean dermatological essentials built on transparent raw sourcing.</p>
+      </div>
+      <div>
+        <h4 class="text-stone-900 dark:text-white font-medium uppercase text-xs tracking-wider mb-4">Customer Care</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">Shipping & Returns</a></li>
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">FAQ Hub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-stone-900 dark:text-white font-medium uppercase text-xs tracking-wider mb-4">Inside Cosmo</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">Sustainability Blueprint</a></li>
+          <li><a href="#" class="hover:text-stone-900 dark:hover:text-white">Ingredient Dictionary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-stone-900 dark:text-white font-medium uppercase text-xs tracking-wider mb-4">Newsletter</h4>
+        <p class="text-xs mb-3">Join for early arrivals access and skin routine guides.</p>
+        <div class="flex border-b border-stone-300 dark:border-stone-800 pb-1">
+          <input type="email" placeholder="Your email address" class="w-full bg-transparent border-0 text-xs focus:outline-none placeholder-stone-400 text-stone-800 dark:text-stone-200">
+          <button class="text-xs uppercase font-medium tracking-wider text-stone-900 dark:text-white ml-2">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-screen-xl mx-auto px-6 py-4 border-t border-stone-50 dark:border-stone-900 text-[11px] text-stone-400 text-center">
+      &copy; 2026 COSMO Inc. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 8. APPLICATION INTERACTIVE SCRIPTS         -->
+  <!-- ========================================== -->
+  <script>
+    // Dark mode state management
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-toggle-sun-icon');
+    const moonIcon = document.getElementById('theme-toggle-moon-icon');
+
+    // Drawer management
+    const cartOpen = document.getElementById('cart-open');
+    const cartClose = document.getElementById('cart-close');
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartOverlay = document.getElementById('cart-overlay-bg');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartBadge = document.getElementById('cart-badge');
+    const cartCountTitle = document.getElementById('cart-count-title');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+
+    // Dynamic detail selections
+    let activeSize = "50ml";
+    let activePrice = 48.00;
+    let activeQuantity = 1;
+
+    // Cart memory simulation
+    let bagItems = [
+      { name: "Orchid Peptide Hydration Serum", price: 48.00, volume: "50ml", qty: 1, img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200" }
+    ];
+
+    function syncThemeDisplay() {
+      if (document.documentElement.classList.contains('dark')) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+    syncThemeDisplay();
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+      syncThemeDisplay();
+    });
+
+    // Image Swapper Gallery
+    function switchProductImage(src) {
+      document.getElementById('main-product-image').src = src;
+    }
+
+    // Interactive Pricing Selector
+    function selectProductSize(volume, price, element) {
+      activeSize = volume;
+      activePrice = price;
+      
+      // Update displayed price label
+      document.getElementById('product-price').innerText = `$${price.toFixed(2)}`;
+      
+      // Reset visual siblings states
+      const siblings = element.parentNode.children;
+      for (let btn of siblings) {
+        btn.className = "px-4 py-2 text-xs uppercase tracking-wider border border-stone-200 dark:border-stone-800 hover:border-stone-900 dark:hover:border-white text-stone-600 dark:text-stone-300 rounded-md transition-all";
+      }
+      
+      // Apply active visual styling to current element
+      element.className = "px-4 py-2 text-xs uppercase tracking-wider border border-stone-900 bg-stone-900 text-white dark:border-white dark:bg-white dark:text-stone-950 rounded-md transition-all font-semibold";
+    }
+
+    // Counter Adjustment Mechanics
+    function adjustCounter(change) {
+      const display = document.getElementById('quantity-counter');
+      let currentVal = parseInt(display.innerText);
+      currentVal += change;
+      if (currentVal >= 1) {
+        display.innerText = currentVal;
+        activeQuantity = currentVal;
+      }
+    }
+
+    // Collapsible Accordion mechanics
+    function toggleAccordion(id) {
+      const container = document.getElementById(id);
+      const icon = document.getElementById(`${id}-icon`);
+      container.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    // Add to Bag triggering
+    function triggerAddToBag() {
+      // Find matching size duplication
+      const matched = bagItems.find(item => item.name === "Orchid Peptide Hydration Serum" && item.volume === activeSize);
+      if (matched) {
+        matched.qty += activeQuantity;
+      } else {
+        bagItems.push({
+          name: "Orchid Peptide Hydration Serum",
+          price: activePrice,
+          volume: activeSize,
+          qty: activeQuantity,
+          img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=200"
+        });
+      }
+      
+      renderEcomCart();
+      triggerToastNotification();
+    }
+
+    function triggerToastNotification() {
+      const toast = document.getElementById('toast');
+      toast.classList.remove('translate-x-72');
+      setTimeout(() => {
+        toast.classList.add('translate-x-72');
+      }, 2500);
+    }
+
+    // Cart drawer controllers
+    cartOpen.addEventListener('click', () => cartDrawer.classList.remove('hidden'));
+    const hideBag = () => cartDrawer.classList.add('hidden');
+    cartClose.addEventListener('click', hideBag);
+    cartOverlay.addEventListener('click', hideBag);
+
+    function renderEcomCart() {
+      cartItemsContainer.innerHTML = '';
+      let sum = 0;
+      let totalQty = 0;
+
+      if (bagItems.length === 0) {
+        cartItemsContainer.innerHTML = `
+          <div class="flex flex-col items-center justify-center h-64 text-stone-400">
+            <svg class="w-12 h-12 mb-3 text-stone-300 dark:text-stone-700" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path></svg>
+            <p class="text-xs uppercase tracking-widest">Your bag is empty</p>
+          </div>
+        `;
+        cartBadge.innerText = '0';
+        cartCountTitle.innerText = '0';
+        cartSubtotal.innerText = '$0.00';
+        return;
+      }
+
+      bagItems.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        sum += itemTotal;
+        totalQty += item.qty;
+
+        cartItemsContainer.innerHTML += `
+          <div class="flex py-2 border-b border-stone-50 dark:border-stone-800 pb-4">
+            <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md border border-stone-100 dark:border-stone-800 bg-stone-50">
+              <img src="${item.img}" alt="${item.name}" class="h-full w-full object-cover">
+            </div>
+            <div class="ml-4 flex flex-1 flex-col">
+              <div class="flex justify-between text-sm font-medium text-stone-900 dark:text-white">
+                <h3>${item.name}</h3>
+                <p class="ml-4">$${itemTotal.toFixed(2)}</p>
+              </div>
+              <p class="mt-1 text-xs text-stone-400">Size: ${item.volume}</p>
+              <div class="flex flex-1 items-end justify-between text-xs">
+                <p class="text-stone-500 dark:text-stone-400">Qty ${item.qty}</p>
+                <button onclick="removeItem(${index})" type="button" class="font-medium text-stone-400 hover:text-stone-900 dark:hover:text-white underline transition-colors">Remove</button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      cartBadge.innerText = totalQty;
+      cartCountTitle.innerText = bagItems.length;
+      cartSubtotal.innerText = `$${sum.toFixed(2)}`;
+    }
+
+    function removeItem(index) {
+      bagItems.splice(index, 1);
+      renderEcomCart();
+    }
+
+    // Review submit injection mockup
+    function handleReviewSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('form-name').value;
+      const rating = document.getElementById('form-rating').value;
+      const body = document.getElementById('form-body').value;
+      
+      const stars = "★".repeat(parseInt(rating)) + "☆".repeat(5 - parseInt(rating));
+      
+      const feed = document.getElementById('reviews-feed');
+      const newReview = document.createElement('div');
+      newReview.className = "border-b border-stone-100 dark:border-stone-900 pb-6 animate-pulse";
+      newReview.innerHTML = `
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-xs font-semibold text-stone-900 dark:text-white">${name} <span class="text-[9px] text-stone-400 font-normal ml-2">(Verified Buyer)</span></p>
+          <span class="text-xs text-amber-500">${stars}</span>
+        </div>
+        <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">${body}</p>
+      `;
+      
+      // Prepend review directly to feed
+      feed.insertBefore(newReview, feed.firstChild);
+      
+      // Reset review input fields
+      document.getElementById('new-review-form').reset();
+    }
+
+    // Run execution cycle
+    renderEcomCart();
+  </script>
+</body>
+</html>
